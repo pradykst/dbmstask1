@@ -1,0 +1,60 @@
+use inventoryDB
+
+db.createCollection("products")
+
+db.products.insertMany([
+    {
+        name: 'rice',
+        description: '1kg',
+        price: 70,
+        quantity: 50,
+        category: 'grocery'
+
+    },
+    {
+        name: 'wheat',
+        description: '1kg',
+        price: 55,
+        quantity: 75,
+        category: 'grocery'
+
+    },
+    {
+        name: 'chips',
+        description: 'yellow lays',
+        price: 20,
+        quantity: 100,
+        category: 'snacks'
+
+    },
+    {
+        name: 'biscuit',
+        description: 'hide and seek',
+        price: 30,
+        quantity: 150,
+        category: 'snacks'
+
+    },
+    {
+        name: 'soap',
+        description: 'dove',
+        price: 88,
+        quantity: 65,
+        category: 'household'
+
+    }
+])
+
+db.products.find()
+db.products.find({"price": { $lt: 60}})
+db.products.find({"quantity": { $gt: 70}})
+
+db.products.updateOne( { name: "biscuit" },
+    {
+      $set: {
+        price: 35
+      }
+    })
+
+db.products.deleteOne({ name: "soap" })
+
